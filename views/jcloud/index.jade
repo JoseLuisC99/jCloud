@@ -1,0 +1,81 @@
+extends ./layout
+block content
+	script(type="text/javascript").
+		active('index')
+	#Dir_Content
+		table.bordered.striped
+			thead
+				tr
+					th(style="width: 52%;") Nombre
+					th(style="width: 15%;") Tamaño
+					th(style="width: 15%;") Tipo
+					th(style="width: 15%;") Data Create
+					th(style="width: 3%")
+			tbody
+				for file in files
+					tr.file-row
+						td.td_file #[span(data-type="#{file.type}").icon-file.fa] #{file.name}
+						td.td_file #{file.size} B
+						td.td_file!= file.type
+						td.td_file!= file.date
+						td.center-align.menu-file-button #[span.fa.fa-ellipsis-v]
+							ul.menu-file
+								li(data-name="#{file.name}" data-size="#{file.size}" data-last="#{file.last}" data-date="#{file.date}").info-file #[span(style="padding-right: 10px;").fa.fa-info-circle] Informacion
+								li #[span(style="padding-right: 10px;").fa.fa-arrow-circle-down] Descargar
+								li(data-name="#{file.name}" data-size="#{file.size}" data-file="#{file._id}" data-key="#{file.key}").link-file #[span(style="padding-right: 10px;").fa.fa-share] Obtener enlace
+								li #[span(style="padding-right: 10px;").fa.fa-recycle] Eliminar
+	.fixed-action-btn(style="bottom: 25px; right: 25px;")
+		.btn-floating.btn-large.red
+			span.fa.fa-plus
+		ul
+			li(data-content="NewFolder").btn-floating.blue.btn-new #[span.fa.fa-folder]
+			li(data-content="NewFile").btn-floating.green.btn-new #[span.fa.fa-file]
+	#NewFile
+		form(method="post" action="/jcloud/new/file" enctype='multipart/form-data').new_style_form
+			button(data-parent = "NewFile").right.btn.btn-floating.btn-close #[span.fa.fa-times]
+			p.medium-text.center-align Subir nuevo archivo
+			.input-field.file-field
+				.btn
+					span #[span.fa.fa-file]
+					input(type="file" name="file")#File
+				.file-path-wrapper
+					input(type="text").file-path.validate
+			.row
+				.col.s12.m6
+					b Tamaño: 
+					span#prevSize
+				.col.s12.m6
+					b Tipo:
+					span#preType
+				.col.s12.m4
+					.input-field
+						input(type="radio" name="access" value="true")#PublicFile
+						label(for="PublicFile") Publico
+				.col.s12.m4
+					.input-field
+						input(type="radio" name="access" value="false" checked)#NoPublicFile
+						label(for="NoPublicFile") No publico
+			///// Inputs de formulario /////
+			input(type="hidden" name="size")#Size
+			input(type="hidden" name="type")#Type
+			input(type="hidden" name="date")#Date
+			input(type="hidden" name="name")#Name
+			input(type="hidden" name="lastModified")#Last
+			input(type="hidden" name="mime")#Mime
+			input(type="hidden" name="folder" value="#{dir}")#Folder
+			input(type="hidden" name="key")#Key
+			////////////////////////////////
+
+			input(type="submit").btn.right
+	#NewFolder
+		form(method="post" action="/jcloud/new/folder").new_style_form
+			button(data-parent = "NewFolder").right.btn.btn-floating.btn-close #[span.fa.fa-times]
+			p.medium-text.center-align Nueva Carpeta
+			.input-field
+				input(type="text" name="nameFolder")#NameFolder
+				label(for="NameFolder") Folder:
+			input(type="submit").btn.right
+	script(src="http://localhost:8080/assets/js/new_forms.js")
+	script(src="http://localhost:8080/assets/js/file.js")
+	script(src="http://localhost:8080/assets/js/createIcon.js")
+	script(src="http://localhost:8080/assets/js/open-menu.js")

@@ -1,0 +1,27 @@
+extends ./layout
+block content
+	.container
+		.row
+			.col.s12.m8.offset-m2
+				form(method="post" action="/login/signup").card
+					.card-content
+						.card-title.center-align jCloud
+						- if(error != undefined || error != null)
+							p.center-align.red-text!= error
+						.input-field
+							input(type="text" name="name" id="name" required).validate
+							label(for="name") Nombre:
+						.input-field
+							input(type="email" name="email" id="email" required).validate
+							label(for="email") Correo:
+						.input-field
+							input(type="password" name="password" id="pass" required).validate
+							label(for="pass") Contraseña:
+						.input-field
+							input(type="password" name="password_r" id="pass2" required).validate
+							label(for="pass2") Repetir contraseña:
+						input(type="checkbox" id="TermsAndCond" required)
+						label(for="TermsAndCond") #[a(href="#") Acepto terminos y condiciones]
+					.card-action
+						input(type="submit").btn
+						a(href="/login").right Ya tengo cuenta

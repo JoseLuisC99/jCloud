@@ -1,0 +1,50 @@
+doctype html
+html
+	head
+		meta(charset="utf-8")
+		title jCloud
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js")
+		link(href="http://localhost:8080/assets/css/style.css" rel="stylesheet")
+		link(href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css", rel="stylesheet")
+		link(href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js" rel="stylesheet")
+		link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet")
+	body
+		.full-container
+			#Main
+				.col.s12.m6.offset-s6.center-align
+					h1.eslogan jCloud
+					.buttons-group
+						a(href="/login").btn Comenzar
+						a(href="#About").btn Saber mas
+			img(src="http://localhost:8080/assets/img/head.png").image-fixed-bottom
+		section#About.white-text
+			.container
+				.row.center-align
+					.col.m8.s12.offset-m2
+						span.fa.fa-cloud.large-icon
+						.big-text Una manera de guardar tus archivos para el desarrollo Web.
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias nisi sequi ut, neque, velit at reprehenderit aliquid autem ullam necessitatibus aliquam? Porro perferendis similique consectetur laudantium tempore, iure tempora in.
+				.row.no-margin
+					.col.s12
+						.card-bordered-white.section
+							h2.no-h ¿Que es jCloud?
+							p.
+								jCloud es una plataforma open source donde usted puede guardar, compartir y usar diferentes tipos de archivos para sus paginas web. Ofrecemos un servicio libre, por lo que usted puede usar la plataforma sin ningun tipo de paga de derechos.
+							p.
+								jCloud es rapido, ligero y sencillo, por lo que su uso es facil y comprensible para cualquiera, le permitira a su sitio web crear un trafico rapido.
+					.col.m4.s12
+						.card-bordered-white
+							h2.no-h Archivos seguros
+							p.
+								Ofrecemos una seguridad buena, tus archivos estaran seguros y no se compartiran si tu asi lo deseas, tu seleccionas que compartir y que no.
+					.col.m8.s12
+						.card-bordered-white
+							h2.no-h Developer API
+							p.
+								La API REST de jCloud que ofrece un manejo facil para ser utilizado por otras paginas como una capa de abstracción, los servicios son pocos, pero utiles en ciertas ocaciones.
+							p.
+								La API de jCloud ofrece una utilidad bastante simple para diferentes proyectos que tu quieras generar.
+		img(src="http://localhost:8080/assets/img/bottom.png" style="width: 100%;")
+		footer.
+			(C) JCloud: powered by CELEP Apps
+		script(src="http://localhost:8080/assets/js/common.js")

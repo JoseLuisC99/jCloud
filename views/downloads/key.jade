@@ -1,0 +1,20 @@
+extends ./layout
+block content
+	.row
+		.col.s12.m6.offset-m3
+			.card
+				p.card-title.center-align Introducir clave de cifrado
+				- if(error!=undefined || error!=null)
+					p.red-text.center-align!= error
+				.card-content
+					p
+						b.margin-right #{file.name}
+						span #{file.size} B
+					p Para acceder a esta archivo, necesitas su Clave de descifrado. Si no tienes la clave, contacta con el creador del enlace.
+					form(method="post" action="/downloads/#{file._id}")
+						.input-field
+							input(type="text" name="key").validate#Key
+							label(for="Key") Clave de cifrado:
+						input(type="submit").btn.grey-text.transparent
+				.card-action.right-align
+					a(href="/") Ir a jCloud
